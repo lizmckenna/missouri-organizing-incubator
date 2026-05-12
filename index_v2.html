@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missouri Organizing Incubator — Cultivate. Catalyze. Contest.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0e1418;
+    --night-2: #161e23;
+    --bone: #f1ead8;
+    --bone-2: #e6dcc2;
+    --crimson: #d23026;
+    --crimson-deep: #a51e16;
+    --rust: #c75328;
+    --gold: #e9b949;
+    --moss: #4a6b3a;
+    --river: #2a5a78;
+    --ink-line: #2a3439;
+    --bone-line: #d2c69d;
+    --display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--night); color: var(--bone);
+    font-family: var(--sans); -webkit-font-smoothing: antialiased;
+  }
+  body { overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  ::selection { background: var(--crimson); color: var(--bone); }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 60;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 32px;
+    background: rgba(14, 20, 24, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(241,234,216,0.1);
+  }
+  .brand { display: flex; align-items: center; gap: 12px; font-family: var(--display); letter-spacing: 0.02em; }
+  .brand-mark {
+    width: 38px; height: 38px;
+    background: var(--crimson);
+    display: grid; place-items: center;
+    color: var(--bone); font-family: var(--display);
+    font-size: 22px; line-height: 1;
+    transform: rotate(-4deg);
+    box-shadow: 3px 3px 0 var(--bone);
+  }
+  .brand-name { font-size: 20px; line-height: 1; letter-spacing: 0.04em; }
+  .brand-name small {
+    display: block; font-family: var(--mono); font-size: 9px;
+    color: var(--gold); letter-spacing: 0.18em; margin-top: 4px;
+  }
+  .nav-links { display: flex; gap: 28px; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+  .nav-links a { padding: 4px 0; transition: color .15s ease; }
+  .nav-links a:hover { color: var(--crimson); }
+  .nav-cta {
+    font-family: var(--display); font-size: 16px; letter-spacing: 0.06em;
+    background: var(--crimson); color: var(--bone);
+    padding: 10px 18px;
+    transition: background .2s ease, transform .15s ease;
+  }
+  .nav-cta:hover { background: var(--bone); color: var(--night); transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--crimson); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    padding: 60px 32px 0;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 75% 30%, rgba(210,48,38,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 90%, rgba(233,185,73,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(241,234,216,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(241,234,216,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; max-width: 1500px; margin: 0 auto; }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold);
+    border: 1px solid rgba(233,185,73,0.4);
+    padding: 8px 14px;
+  }
+  .hero-tag::before {
+    content: ""; width: 7px; height: 7px;
+    background: var(--crimson); border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(210,48,38,0.2);
+  }
+  .hero-state { color: var(--bone); margin-left: 8px; padding-left: 12px; border-left: 1px solid rgba(241,234,216,0.2); }
+
+  h1.hero-h {
+    font-family: var(--display);
+    font-size: clamp(80px, 17vw, 280px);
+    line-height: 0.82; letter-spacing: 0.005em;
+    margin-top: 26px;
+    color: var(--bone);
+    text-transform: uppercase;
+  }
+  h1.hero-h .row { display: block; }
+  h1.hero-h .row.tight { letter-spacing: -0.01em; }
+  h1.hero-h .red { color: var(--crimson); }
+  h1.hero-h .outline {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--bone);
+    text-stroke: 2px var(--bone);
+  }
+  h1.hero-h em {
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    color: var(--gold); text-transform: lowercase;
+    letter-spacing: -0.02em;
+    font-size: 0.78em;
+    vertical-align: 0.04em;
+  }
+
+  .hero-sub-row {
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px;
+    margin-top: 50px;
+    border-top: 1px solid rgba(241,234,216,0.15);
+    padding-top: 32px;
+    align-items: start;
+  }
+  .hero-lede {
+    font-family: var(--serif); font-size: 26px; line-height: 1.32;
+    color: var(--bone); font-weight: 300;
+    max-width: 30ch;
+    letter-spacing: -0.005em;
+  }
+  .hero-lede strong { color: var(--crimson); font-weight: 600; font-style: italic; }
+  .hero-lede em { color: var(--gold); font-style: italic; }
+
+  .hero-quick {
+    font-family: var(--mono); font-size: 12px; line-height: 1.7;
+    color: rgba(241,234,216,0.7);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .hero-quick-row { display: grid; grid-template-columns: 90px 1fr; gap: 16px; align-items: baseline; }
+  .hero-quick-row .k { color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; font-size: 10px; }
+  .hero-quick-row .v { color: var(--bone); font-family: var(--sans); font-size: 14px; line-height: 1.5; }
+
+  .hero-cta-row { display: flex; gap: 16px; margin-top: 44px; padding-bottom: 60px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--crimson); color: var(--bone);
+    font-family: var(--display); font-size: 18px; letter-spacing: 0.06em;
+    padding: 18px 28px;
+    transition: transform .15s ease, box-shadow .15s ease;
+    border: none;
+  }
+  .btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--bone); }
+  .btn-primary svg { width: 18px; height: 18px; }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--bone); font-family: var(--display); font-size: 18px; letter-spacing: 0.06em;
+    padding: 18px 4px;
+    border-bottom: 2px solid var(--bone);
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee {
+    background: var(--crimson);
+    color: var(--bone);
+    padding: 18px 0;
+    overflow: hidden;
+    border-top: 2px solid var(--bone);
+    border-bottom: 2px solid var(--bone);
+    transform: rotate(-1.2deg);
+    margin: 0 -20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  .marquee-track {
+    display: flex; gap: 40px;
+    white-space: nowrap;
+    animation: scroll 36s linear infinite;
+    font-family: var(--display);
+    font-size: clamp(30px, 4.2vw, 56px);
+    letter-spacing: 0.04em;
+  }
+  .marquee-track span { display: inline-flex; align-items: center; gap: 40px; }
+  .marquee-track .star { color: var(--gold); font-family: var(--serif); font-style: italic; font-weight: 300; }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ---------- SECTION FRAMING ---------- */
+  section { position: relative; }
+  .container { max-width: 1500px; margin: 0 auto; padding: 0 32px; }
+  .section-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--crimson);
+    margin-bottom: 24px;
+  }
+  .section-eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--crimson); }
+  h2.big {
+    font-family: var(--display);
+    font-size: clamp(56px, 8.5vw, 156px);
+    line-height: 0.86; letter-spacing: 0.005em;
+    text-transform: uppercase;
+  }
+  h2.big em {
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    text-transform: lowercase; letter-spacing: -0.02em;
+    font-size: 0.86em;
+  }
+
+  /* ---------- WHY MISSOURI ---------- */
+  .why { padding: 140px 0 120px; border-top: 1px solid rgba(241,234,216,0.12); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+  .why h2 { color: var(--bone); }
+  .why h2 em { color: var(--crimson); }
+  .why-body p {
+    font-family: var(--serif); font-size: 23px; line-height: 1.45;
+    color: var(--bone); font-weight: 300;
+    margin-bottom: 24px;
+  }
+  .why-body p strong {
+    font-weight: 500; font-style: normal;
+    background: var(--crimson); color: var(--bone);
+    padding: 0 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+  .why-body p em { color: var(--gold); }
+
+  .why-stats {
+    margin-top: 64px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(241,234,216,0.15);
+  }
+  .why-stat {
+    padding: 28px 24px 28px 0;
+    border-right: 1px solid rgba(241,234,216,0.15);
+  }
+  .why-stat:last-child { border-right: none; padding-right: 0; }
+  .why-stat:not(:first-child) { padding-left: 28px; }
+  .why-stat .num {
+    font-family: var(--display);
+    font-size: clamp(48px, 5vw, 76px);
+    line-height: 0.9;
+    color: var(--gold);
+  }
+  .why-stat .num .pct { font-size: 0.55em; color: var(--bone); }
+  .why-stat .label {
+    margin-top: 10px; font-size: 13px; line-height: 1.45;
+    color: rgba(241,234,216,0.75); max-width: 24ch;
+  }
+  .why-stat .src {
+    font-family: var(--mono); font-size: 9px; color: var(--crimson);
+    letter-spacing: 0.12em; text-transform: uppercase; margin-top: 10px;
+  }
+
+  /* ---------- THE WORK / FOUR FRAMEWORKS ---------- */
+  .work {
+    background: var(--bone); color: var(--night);
+    padding: 140px 0 160px;
+    position: relative;
+    overflow: hidden;
+  }
+  .work::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: repeating-linear-gradient(90deg, var(--crimson) 0 24px, var(--night) 24px 28px, var(--gold) 28px 52px, var(--night) 52px 56px);
+  }
+  .work .section-eyebrow { color: var(--crimson); }
+  .work .section-eyebrow::before { background: var(--crimson); }
+  .work h2 { color: var(--night); }
+  .work h2 em { color: var(--crimson); }
+
+  .work-head { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: end; margin-bottom: 80px; }
+  .work-intro { font-family: var(--serif); font-size: 21px; line-height: 1.5; color: var(--ink-line); max-width: 44ch; }
+
+  .frameworks {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 2px solid var(--night);
+    border-left: 2px solid var(--night);
+  }
+  .framework {
+    padding: 40px 36px 44px;
+    border-right: 2px solid var(--night);
+    border-bottom: 2px solid var(--night);
+    display: flex; flex-direction: column; gap: 14px;
+    background: var(--bone);
+    position: relative; overflow: hidden;
+    transition: background .2s ease;
+  }
+  .framework:hover { background: var(--bone-2); }
+  .framework-num {
+    font-family: var(--display); font-size: 56px; line-height: 0.9;
+    color: var(--crimson);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .framework-num::after {
+    content: ""; flex: 1; height: 2px; background: var(--night);
+    margin-left: 6px;
+  }
+  .framework h3 {
+    font-family: var(--display); font-size: 36px; line-height: 0.95;
+    letter-spacing: 0.005em; text-transform: uppercase;
+    color: var(--night);
+    max-width: 14ch;
+  }
+  .framework h3 em {
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    text-transform: lowercase; letter-spacing: -0.02em;
+    color: var(--crimson); font-size: 0.92em;
+  }
+  .framework p { font-size: 15px; line-height: 1.6; color: var(--ink-line); max-width: 44ch; }
+  .framework .pull {
+    margin-top: auto; padding-top: 16px;
+    font-family: var(--serif); font-style: italic; font-size: 16px; line-height: 1.4;
+    color: var(--crimson-deep); border-top: 1px solid rgba(14,20,24,0.15);
+  }
+
+  /* ---------- PRIORITY BETS ---------- */
+  .bets { padding: 140px 0 160px; }
+  .bets h2 { color: var(--bone); }
+  .bets h2 em { color: var(--gold); }
+  .bets-head { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: end; margin-bottom: 80px; }
+  .bets-intro { font-family: var(--serif); font-size: 21px; line-height: 1.5; color: rgba(241,234,216,0.75); max-width: 44ch; }
+
+  .bet-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(241,234,216,0.18); }
+  .bet {
+    display: grid; grid-template-columns: 80px 1fr 1.6fr 200px;
+    gap: 40px;
+    padding: 44px 0;
+    border-bottom: 1px solid rgba(241,234,216,0.18);
+    align-items: start;
+    transition: background .2s ease;
+    position: relative;
+    cursor: pointer;
+  }
+  .bet:hover { background: rgba(210,48,38,0.06); }
+  .bet:hover .bet-arrow { transform: translateX(8px); color: var(--crimson); }
+  .bet-num {
+    font-family: var(--display); font-size: 64px; color: var(--crimson); line-height: 0.9;
+  }
+  .bet-title {
+    font-family: var(--display); font-size: 38px; line-height: 0.95;
+    text-transform: uppercase; letter-spacing: 0.005em;
+    color: var(--bone);
+  }
+  .bet-title em {
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    text-transform: lowercase; letter-spacing: -0.02em;
+    color: var(--gold);
+  }
+  .bet-title small {
+    display: block; font-family: var(--mono); font-size: 11px;
+    color: rgba(241,234,216,0.6); margin-top: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .bet-body { font-family: var(--serif); font-size: 17px; line-height: 1.5; color: rgba(241,234,216,0.82); font-weight: 300; }
+  .bet-body strong { font-weight: 500; color: var(--bone); font-style: normal; background: rgba(233,185,73,0.18); padding: 0 4px; }
+  .bet-meta {
+    display: flex; flex-direction: column; gap: 14px;
+    font-family: var(--mono); font-size: 11px;
+    text-align: right;
+    color: rgba(241,234,216,0.6);
+  }
+  .bet-meta b {
+    display: block; font-family: var(--display); font-weight: 400;
+    font-size: 22px; color: var(--bone);
+    letter-spacing: 0.02em; margin-top: 4px;
+  }
+  .bet-arrow {
+    position: absolute; right: 0; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--display); font-size: 32px;
+    color: rgba(241,234,216,0.4);
+    transition: transform .2s ease, color .2s ease;
+    pointer-events: none;
+  }
+
+  /* ---------- FIGHT BACK / YEAR OF NO ---------- */
+  .yearofno {
+    background: var(--crimson);
+    color: var(--bone);
+    padding: 140px 0 160px;
+    position: relative; overflow: hidden;
+  }
+  .yearofno::before {
+    content: "NO."; position: absolute;
+    top: -40px; right: -40px;
+    font-family: var(--display);
+    font-size: clamp(300px, 50vw, 800px);
+    line-height: 0.8;
+    color: rgba(14,20,24,0.12);
+    pointer-events: none;
+  }
+  .yearofno-inner { position: relative; z-index: 1; }
+  .yearofno .section-eyebrow { color: var(--bone); }
+  .yearofno .section-eyebrow::before { background: var(--bone); }
+  .yearofno h2 { color: var(--bone); }
+  .yearofno h2 em { color: var(--gold); }
+
+  .yearofno-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 80px; margin-top: 60px; align-items: start;
+  }
+  .yearofno-lede {
+    font-family: var(--serif); font-size: 23px; line-height: 1.45;
+    color: var(--bone); font-weight: 300;
+    max-width: 36ch;
+  }
+  .yearofno-lede em { color: var(--gold); font-style: italic; }
+  .yearofno-lede strong { font-weight: 600; font-style: normal; border-bottom: 2px solid var(--bone); padding-bottom: 1px; }
+
+  .no-list { display: flex; flex-direction: column; gap: 0; }
+  .no-item {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 24px; padding: 24px 0;
+    border-bottom: 1px solid rgba(241,234,216,0.25);
+    align-items: baseline;
+  }
+  .no-item:first-child { border-top: 1px solid rgba(241,234,216,0.25); }
+  .no-item .badge {
+    font-family: var(--display); font-size: 32px;
+    color: var(--bone); border: 2px solid var(--bone);
+    text-align: center; padding: 6px 4px; line-height: 1;
+    transform: rotate(-2deg);
+    background: var(--crimson-deep);
+  }
+  .no-item h4 { font-family: var(--display); font-size: 22px; line-height: 1.05; text-transform: uppercase; letter-spacing: 0.01em; color: var(--bone); }
+  .no-item p { font-family: var(--serif); font-size: 15px; line-height: 1.5; color: rgba(241,234,216,0.85); margin-top: 6px; max-width: 60ch; }
+
+  /* ---------- MAP / GEOGRAPHY ---------- */
+  .geo { padding: 140px 0; background: var(--night-2); }
+  .geo h2 { color: var(--bone); }
+  .geo h2 em { color: var(--crimson); }
+  .geo-head { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: end; margin-bottom: 60px; }
+  .geo-intro { font-family: var(--serif); font-size: 21px; line-height: 1.5; color: rgba(241,234,216,0.78); max-width: 44ch; }
+
+  .geo-canvas {
+    aspect-ratio: 16/8;
+    background: var(--night);
+    border: 1px solid rgba(241,234,216,0.15);
+    position: relative; overflow: hidden;
+  }
+  .geo-canvas svg { width: 100%; height: 100%; display: block; }
+  .geo-pin { fill: var(--crimson); }
+  .geo-pin-ring { stroke: var(--crimson); fill: none; opacity: 0.45; }
+  .geo-label {
+    fill: var(--bone); font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .geo-label-sub { fill: var(--gold); font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .geo-grid-bg { stroke: rgba(241,234,216,0.06); }
+
+  .geo-legend {
+    margin-top: 32px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+  }
+  .geo-legend > div {
+    border-top: 1px solid rgba(241,234,216,0.18);
+    padding-top: 16px;
+  }
+  .geo-legend h5 { font-family: var(--display); font-size: 24px; letter-spacing: 0.02em; text-transform: uppercase; color: var(--bone); }
+  .geo-legend p { font-size: 13px; color: rgba(241,234,216,0.75); line-height: 1.5; margin-top: 6px; }
+
+  /* ---------- PRINCIPLES / FRAMEWORKS-MINI ---------- */
+  .principles { padding: 140px 0; }
+  .principles h2 { color: var(--bone); }
+  .principles h2 em { color: var(--gold); }
+  .principles-head { max-width: 900px; margin-bottom: 70px; }
+  .principles-intro { font-family: var(--serif); font-size: 21px; line-height: 1.5; color: rgba(241,234,216,0.78); max-width: 50ch; margin-top: 20px; }
+
+  .principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid rgba(241,234,216,0.18); }
+  .principle {
+    padding: 36px 28px 36px 0;
+    border-right: 1px solid rgba(241,234,216,0.18);
+    border-bottom: 1px solid rgba(241,234,216,0.18);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .principle:nth-child(3n) { border-right: none; }
+  .principle:not(:nth-child(3n+1)) { padding-left: 28px; }
+  .principle-icon {
+    width: 36px; height: 36px;
+    border: 2px solid var(--crimson);
+    display: grid; place-items: center;
+    color: var(--crimson); font-family: var(--display); font-size: 22px;
+    transform: rotate(-3deg);
+  }
+  .principle h4 { font-family: var(--display); font-size: 24px; line-height: 1; text-transform: uppercase; letter-spacing: 0.02em; color: var(--bone); }
+  .principle p { font-size: 14px; line-height: 1.6; color: rgba(241,234,216,0.75); }
+
+  /* ---------- CTA / JOIN ---------- */
+  .join { padding: 160px 0; background: var(--bone); color: var(--night); position: relative; overflow: hidden; }
+  .join::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent 0 36px, rgba(14,20,24,0.04) 36px 37px);
+    pointer-events: none;
+  }
+  .join-inner { position: relative; display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: end; }
+  .join h2 { font-family: var(--display); font-size: clamp(72px, 11vw, 200px); line-height: 0.84; text-transform: uppercase; color: var(--night); }
+  .join h2 em { color: var(--crimson); font-family: var(--serif); font-style: italic; font-weight: 300; text-transform: lowercase; }
+  .join-list { display: flex; flex-direction: column; gap: 4px; margin-top: 32px; }
+  .join-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(14,20,24,0.18);
+    transition: padding .15s ease, color .15s ease;
+  }
+  .join-item:hover { padding-left: 14px; color: var(--crimson); }
+  .join-item .arrow {
+    font-family: var(--display); font-size: 28px;
+    color: var(--crimson);
+  }
+  .join-item h4 { font-family: var(--display); font-size: 26px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--night); }
+  .join-item p { font-size: 14px; color: var(--ink-line); margin-top: 4px; }
+  .join-item:hover h4 { color: var(--crimson); }
+  .join-form {
+    background: var(--night); color: var(--bone);
+    padding: 40px;
+    position: relative;
+  }
+  .join-form::before {
+    content: ""; position: absolute; top: -8px; left: 12px;
+    width: calc(100% + 24px); height: calc(100% + 24px);
+    border: 2px solid var(--crimson);
+    z-index: -1;
+  }
+  .join-form .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+  .join-form h3 { font-family: var(--display); font-size: 38px; line-height: 1; text-transform: uppercase; margin: 8px 0 16px; }
+  .join-form p { font-family: var(--serif); font-size: 16px; line-height: 1.5; color: rgba(241,234,216,0.85); margin-bottom: 24px; }
+  .form-row { display: flex; align-items: stretch; border: 2px solid var(--bone); }
+  .form-row input { flex: 1; background: transparent; border: none; outline: none; color: var(--bone); font-family: var(--sans); font-size: 16px; padding: 14px 16px; }
+  .form-row input::placeholder { color: rgba(241,234,216,0.5); }
+  .form-row button { background: var(--crimson); color: var(--bone); border: none; padding: 14px 22px; font-family: var(--display); font-size: 16px; letter-spacing: 0.06em; cursor: pointer; transition: background .2s ease; }
+  .form-row button:hover { background: var(--bone); color: var(--night); }
+  .join-form-foot { font-family: var(--mono); font-size: 11px; color: rgba(241,234,216,0.6); margin-top: 16px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ---------- FOOTER ---------- */
+  .footer { background: var(--night); color: var(--bone); padding: 80px 0 30px; border-top: 4px solid var(--crimson); }
+  .footer .container { padding: 0 32px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 60px; border-bottom: 1px solid rgba(241,234,216,0.18); }
+  .footer h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; font-weight: 500; }
+  .footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer ul a { font-size: 14px; transition: color .15s ease; }
+  .footer ul a:hover { color: var(--crimson); }
+  .footer-brand .footer-mark { font-family: var(--display); font-size: 56px; line-height: 0.88; text-transform: uppercase; }
+  .footer-brand .footer-mark em { font-family: var(--serif); font-style: italic; font-weight: 300; color: var(--crimson); text-transform: lowercase; }
+  .footer-brand p { margin-top: 18px; font-size: 14px; line-height: 1.6; color: rgba(241,234,216,0.7); max-width: 38ch; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(241,234,216,0.55); }
+
+  /* ---------- giant outro ---------- */
+  .outro { background: var(--night); padding: 0 32px 30px; overflow: hidden; }
+  .outro-mark {
+    font-family: var(--display);
+    font-size: clamp(120px, 22vw, 360px);
+    line-height: 0.85; letter-spacing: 0.005em;
+    color: var(--crimson);
+    border-top: 1px solid rgba(241,234,216,0.18);
+    padding-top: 30px; text-transform: uppercase;
+    text-align: center; white-space: nowrap;
+  }
+  .outro-mark em {
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    color: var(--gold); text-transform: lowercase; letter-spacing: -0.02em;
+  }
+
+  @media (max-width: 1100px) {
+    .hero-sub-row, .why-grid, .work-head, .bets-head, .yearofno-grid, .geo-head, .join-inner, .footer-grid {
+      grid-template-columns: 1fr; gap: 40px;
+    }
+    .why-stats, .frameworks, .principles-grid, .geo-legend { grid-template-columns: 1fr 1fr; }
+    .bet { grid-template-columns: 60px 1fr; }
+    .bet-body, .bet-meta { grid-column: 1 / -1; padding-left: 0; text-align: left; }
+    .bet-meta { flex-direction: row; gap: 24px; flex-wrap: wrap; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 640px) {
+    .why-stats, .frameworks, .principles-grid, .geo-legend { grid-template-columns: 1fr; }
+    .principle, .why-stat, .framework { padding-left: 0 !important; padding-right: 0; border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="brand">
+    <div class="brand-mark">M</div>
+    <div class="brand-name">Missouri<br><small>Organizing Incubator</small></div>
+  </a>
+  <div class="nav-links">
+    <a href="#why">Missouri</a>
+    <a href="#work">The Work</a>
+    <a href="#bets">Priority Bets</a>
+    <a href="#yearofno">Year of No</a>
+    <a href="#join">Plug In</a>
+  </div>
+  <a href="#join" class="nav-cta">Get Involved</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">
+      Launched 2026
+      <span class="hero-state">Show-Me State · Field-Built</span>
+    </div>
+
+    <h1 class="hero-h">
+      <span class="row">Cultivate.</span>
+      <span class="row red">Catalyze.</span>
+      <span class="row">Contest <em>power.</em></span>
+    </h1>
+
+    <div class="hero-sub-row">
+      <p class="hero-lede">
+        The <strong>Missouri Organizing Incubator</strong> seeds, supports, and sharpens new bases of organized people across our state — <em>so the people closest to the fight have the muscle to win it.</em>
+      </p>
+      <div class="hero-quick">
+        <div class="hero-quick-row"><span class="k">What</span><span class="v">A nimble, strategic organizing catalyst — outside the 501(c) frame.</span></div>
+        <div class="hero-quick-row"><span class="k">Where</span><span class="v">Kansas City · St. Louis · St. Joseph · Springfield · rural &amp; small-town Missouri</span></div>
+        <div class="hero-quick-row"><span class="k">For</span><span class="v">Senior organizers, emerging leaders, and the institutions ready to grow them.</span></div>
+      </div>
+    </div>
+
+    <div class="hero-cta-row">
+      <a href="#bets" class="btn-primary">
+        See What We're Building
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#join" class="btn-ghost">Plug Into the Work →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Stakes <span class="star">×</span> Agency <span class="star">✦</span> Leaders Who Organize Leaders <span class="star">✦</span> Bias to Action <span class="star">✦</span> Stacked Strategy <span class="star">✦</span></span>
+    <span>Stakes <span class="star">×</span> Agency <span class="star">✦</span> Leaders Who Organize Leaders <span class="star">✦</span> Bias to Action <span class="star">✦</span> Stacked Strategy <span class="star">✦</span></span>
+  </div>
+</div>
+
+<!-- WHY MISSOURI -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="section-eyebrow">01 — Why Missouri</div>
+        <h2 class="big">A state on<br>the <em>line.</em></h2>
+      </div>
+      <div class="why-body">
+        <p>A decade ago, Missouri catalyzed <strong>the largest social movement in American history</strong> when the movement for Black Lives was launched in Ferguson.</p>
+        <p>Today, Missouri sits at a hinge: anchor of right-wing extremism, or <em>vanguard of multiracial democracy in the Midwest.</em> What gets built here in the next two cycles will shape both.</p>
+        <p>Missourians have forged innovative multiracial alliances across rural, suburban, and urban geographies for generations. The work is to <em>scale that muscle</em> — fast, strategically, and rooted in place.</p>
+      </div>
+    </div>
+
+    <div class="why-stats">
+      <div class="why-stat">
+        <div class="num">62<span class="pct">%</span></div>
+        <div class="label">of Missourians voted YES on a 2018 ballot initiative to raise the minimum wage.</div>
+        <div class="src">Ballot · 2018</div>
+      </div>
+      <div class="why-stat">
+        <div class="num">10<span class="pct">.4%</span></div>
+        <div class="label">union density today — down from nearly 22% before targeted attacks on labor.</div>
+        <div class="src">BLS · 2021</div>
+      </div>
+      <div class="why-stat">
+        <div class="num">85<span class="pct">%</span></div>
+        <div class="label">YES vote in KC's first GO bond passage since 1967, organized by Parents for KC Kids.</div>
+        <div class="src">KC · 2024</div>
+      </div>
+      <div class="why-stat">
+        <div class="num">11</div>
+        <div class="label">strategic political arenas — from school boards to Senate Districts 8 &amp; 30 — where we're stacking power.</div>
+        <div class="src">2026 Field Map</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE WORK / FOUR FRAMEWORKS -->
+<section class="work" id="work">
+  <div class="container">
+    <div class="work-head">
+      <div>
+        <div class="section-eyebrow">02 — Theory of the Work</div>
+        <h2 class="big">Four <em>frameworks.</em><br>One <em>fight.</em></h2>
+      </div>
+      <p class="work-intro">
+        We don't win by mobilizing harder. We win by building bases of organized people that can contest power across municipal, county, school board, legislative, and statewide arenas. Everything we incubate runs through these four.
+      </p>
+    </div>
+
+    <div class="frameworks">
+      <div class="framework">
+        <div class="framework-num">01</div>
+        <h3>Stakes <em>×</em> Agency</h3>
+        <p>People who are clear about their interests — and clear that their action will actually change those conditions — show up, stay, and bring others. Stakes without agency is despair. Agency without stakes is hobby.</p>
+        <div class="pull">"The path to operationalizing organized people as the source of power."</div>
+      </div>
+      <div class="framework">
+        <div class="framework-num">02</div>
+        <h3>Leaders Who Organize <em>Leaders</em></h3>
+        <p>Staff organizers can't substitute for volunteer leaders organizing teams of others. We build for the math: one organizer focused on 15–30 core leaders running 15–30 teams of 500–1,000 people.</p>
+        <div class="pull">"Scaling organized people into a source of power that can actually contest."</div>
+      </div>
+      <div class="framework">
+        <div class="framework-num">03</div>
+        <h3>Bias to <em>Action</em></h3>
+        <p>People learn to organize <em>by organizing</em>. We push through the uncertainty and discomfort of real public action because that's where leaders are forged, momentum builds, and bystanders become participants.</p>
+        <div class="pull">"Public action is where people actually learn to organize."</div>
+      </div>
+      <div class="framework">
+        <div class="framework-num">04</div>
+        <h3>Stacked <em>Strategy</em></h3>
+        <p>A school board fight amplifies a state legislative fight. A workplace win builds tension on Congress. We design plans that compound across concentric arenas — building base power in the very communities we need poised to win every other fight.</p>
+        <div class="pull">"The path to impact, over time, at every level of Missouri's political arenas."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIORITY BETS -->
+<section class="bets" id="bets">
+  <div class="container">
+    <div class="bets-head">
+      <div>
+        <div class="section-eyebrow">03 — Where We're Placing the Bets</div>
+        <h2 class="big">Three priority <em>bets.</em></h2>
+      </div>
+      <p class="bets-intro">
+        The next 3–4 months. Strategic. Nimble. Designed to seize emerging energy and build new bases of power before the moment passes.
+      </p>
+    </div>
+
+    <div class="bet-list">
+      <div class="bet">
+        <div class="bet-num">01</div>
+        <div class="bet-title">Parent Organizing Fellowship<small>Replicating the inaugural cohort</small></div>
+        <div class="bet-body">
+          Parents for KC Kids is an entirely volunteer base of <strong>1,000+ parents, teachers, and older students</strong> defending public schools — from statewide budget cuts to ICE raids to corporate giveaways. They propelled KC to its <strong>first GO bond win since 1967</strong>. We're scaling the fellowship that trained them: 17 parent leaders per cohort, each yielding 20+ new parent-led organizing teams.
+        </div>
+        <div class="bet-meta">
+          <div>Cadence<b>3-month rolling</b></div>
+          <div>Goal<b>Year-round</b></div>
+        </div>
+        <span class="bet-arrow">→</span>
+      </div>
+
+      <div class="bet">
+        <div class="bet-num">02</div>
+        <div class="bet-title">Groundwork<small>Building the data infrastructure organizers actually need</small></div>
+        <div class="bet-body">
+          A new database for tracking organizing people and power — built <em>by</em> organizers, <em>for</em> organizers. Today's tools are owned by private equity, priced for institutional clients, and useless at the thing that actually matters: <strong>helping organizers capture their data, learn from it, and deliver real change for their members.</strong> We're piloting Groundwork's early stages in the field.
+        </div>
+        <div class="bet-meta">
+          <div>Stage<b>Pilot</b></div>
+          <div>Built with<b>Field organizers</b></div>
+        </div>
+        <span class="bet-arrow">→</span>
+      </div>
+
+      <div class="bet">
+        <div class="bet-num">03</div>
+        <div class="bet-title">Distributed Organizing<small>Online activism → offline organizing</small></div>
+        <div class="bet-body">
+          There are <strong>tens of thousands of Missourians</strong> seeking ways to act on the issues impacting their lives — and they haven't been invited yet. We're building a distributed program that meets people across the state and turns online activism into <em>real, in-person, leader-led engagement.</em> Two part-time O2O organizers, one in Kansas City, one in St. Louis.
+        </div>
+        <div class="bet-meta">
+          <div>Hubs<b>KC + STL</b></div>
+          <div>Strategy<b>O2O Strategy Group</b></div>
+        </div>
+        <span class="bet-arrow">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YEAR OF NO -->
+<section class="yearofno" id="yearofno">
+  <div class="yearofno-inner container">
+    <div class="section-eyebrow">04 — The 2026 Fight Back Arc</div>
+    <h2 class="big">A year of <em>no.</em></h2>
+
+    <div class="yearofno-grid">
+      <p class="yearofno-lede">
+        2026 is an outlier cycle — auditor as the top ticket race, threats to democracy and bodily autonomy advancing through the legislature. The Missouri ecosystem has aligned around <strong>a calculated fight back project</strong> that <em>stacks</em>.
+      </p>
+
+      <div class="no-list">
+        <div class="no-item">
+          <div class="badge">No</div>
+          <div>
+            <h4>People Not Politicians</h4>
+            <p>A citizen referendum to overturn racist and illegal redistricting maps — should the ongoing lawsuit fall short.</p>
+          </div>
+        </div>
+        <div class="no-item">
+          <div class="badge">No</div>
+          <div>
+            <h4>Protect Majority Rule</h4>
+            <p>Defending the citizen initiative petition process — the long history of popular democracy in Missouri.</p>
+          </div>
+        </div>
+        <div class="no-item">
+          <div class="badge">No</div>
+          <div>
+            <h4>Stop the Ban</h4>
+            <p>Securing the right to abortion in Missouri and defending the 2024 ballot initiative victory.</p>
+          </div>
+        </div>
+        <div class="no-item">
+          <div class="badge">No</div>
+          <div>
+            <h4>Defend the Income Tax</h4>
+            <p>Stopping the legislative referral that would gut Missouri's revenue base — developing alongside the 2026 session.</p>
+          </div>
+        </div>
+        <div class="no-item">
+          <div class="badge" style="background:var(--gold); color:var(--night); border-color:var(--night);">+</div>
+          <div>
+            <h4>Aligned legislative, local, and workplace fights</h4>
+            <p>Defend public education. Shut down data centers. Advance trans rights. Restore tornado-devastated neighborhoods. Support family farms. Win fair working conditions. <em>They stack.</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GEOGRAPHY -->
+<section class="geo">
+  <div class="container">
+    <div class="geo-head">
+      <div>
+        <div class="section-eyebrow">05 — Where the Work Lives</div>
+        <h2 class="big">Across the <em>state.</em></h2>
+      </div>
+      <p class="geo-intro">
+        Missouri is not one state — it's six. Tenant unions in small towns, worker bases in St. Joseph, parents in KC, students in Columbia, faith leaders in the boot heel. The Incubator funds and seeds where the field has gaps.
+      </p>
+    </div>
+
+    <div class="geo-canvas">
+      <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid meet">
+        <!-- subtle grid -->
+        <defs>
+          <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M 60 0 L 0 0 0 60" fill="none" class="geo-grid-bg" stroke-width="1"/>
+          </pattern>
+          <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#2a3439" stroke-width="2"/>
+          </pattern>
+        </defs>
+        <rect width="1200" height="600" fill="url(#grid)"/>
+
+        <!-- stylized MO outline (parallelogram-ish) -->
+        <path d="M 180 130 L 1020 100 L 1080 230 L 1060 380 L 1000 480 L 880 510 L 780 540 L 580 530 L 380 540 L 260 480 L 180 380 L 160 250 Z"
+              fill="url(#hatch)" stroke="#f1ead8" stroke-width="2" opacity="0.95"/>
+
+        <!-- Rivers (decorative) -->
+        <path d="M 180 280 Q 400 320 620 290 T 1080 270" fill="none" stroke="#2a5a78" stroke-width="3" opacity="0.6" stroke-dasharray="4 4"/>
+        <path d="M 600 530 Q 580 400 600 280" fill="none" stroke="#2a5a78" stroke-width="3" opacity="0.6" stroke-dasharray="4 4"/>
+
+        <!-- City Pins -->
+        <!-- Kansas City -->
+        <g transform="translate(310, 280)">
+          <circle r="22" class="geo-pin-ring" stroke-width="2"/>
+          <circle r="38" class="geo-pin-ring" stroke-width="1" opacity="0.25"/>
+          <circle r="9" class="geo-pin"/>
+          <text x="20" y="-12" class="geo-label">Kansas City</text>
+          <text x="20" y="2" class="geo-label-sub">PARENTS · O2O HUB</text>
+        </g>
+        <!-- St. Joseph -->
+        <g transform="translate(330, 200)">
+          <circle r="14" class="geo-pin-ring" stroke-width="2"/>
+          <circle r="6" class="geo-pin"/>
+          <text x="16" y="-6" class="geo-label">St. Joseph</text>
+          <text x="16" y="6" class="geo-label-sub">WORKER BASE</text>
+        </g>
+        <!-- Columbia -->
+        <g transform="translate(620, 320)">
+          <circle r="14" class="geo-pin-ring" stroke-width="2"/>
+          <circle r="6" class="geo-pin"/>
+          <text x="-100" y="28" class="geo-label">Columbia</text>
+          <text x="-100" y="40" class="geo-label-sub">STUDENT ORG</text>
+        </g>
+        <!-- St. Louis -->
+        <g transform="translate(960, 290)">
+          <circle r="22" class="geo-pin-ring" stroke-width="2"/>
+          <circle r="38" class="geo-pin-ring" stroke-width="1" opacity="0.25"/>
+          <circle r="9" class="geo-pin"/>
+          <text x="-160" y="-12" class="geo-label">St. Louis</text>
+          <text x="-160" y="2" class="geo-label-sub">O2O HUB · SD-8 FIGHT</text>
+        </g>
+        <!-- Ferguson (small) -->
+        <g transform="translate(940, 270)">
+          <circle r="6" class="geo-pin" opacity="0.7"/>
+          <text x="14" y="-4" class="geo-label-sub" style="font-size:8px">Ferguson</text>
+        </g>
+        <!-- Springfield -->
+        <g transform="translate(580, 460)">
+          <circle r="18" class="geo-pin-ring" stroke-width="2"/>
+          <circle r="8" class="geo-pin"/>
+          <text x="20" y="-6" class="geo-label">Springfield</text>
+          <text x="20" y="6" class="geo-label-sub">SD-30 · NESTED HOUSE</text>
+        </g>
+        <!-- Rural / small-town markers -->
+        <g opacity="0.6">
+          <circle cx="450" cy="180" r="3" class="geo-pin"/>
+          <circle cx="510" cy="240" r="3" class="geo-pin"/>
+          <circle cx="780" cy="200" r="3" class="geo-pin"/>
+          <circle cx="820" cy="430" r="3" class="geo-pin"/>
+          <circle cx="700" cy="490" r="3" class="geo-pin"/>
+          <circle cx="380" cy="430" r="3" class="geo-pin"/>
+          <circle cx="900" cy="470" r="3" class="geo-pin"/>
+        </g>
+
+        <!-- compass/key -->
+        <g transform="translate(1020, 540)" font-family="JetBrains Mono" font-size="11" fill="#e9b949" letter-spacing="2">
+          <text>N · 39°N 92°W</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="geo-legend">
+      <div>
+        <h5>Anchor Cities</h5>
+        <p>KC + STL — where most institutional capacity sits today and where the next bases of power get built.</p>
+      </div>
+      <div>
+        <h5>Strategic Districts</h5>
+        <p>Senate Districts 8 (KC) and 30 (Springfield) and the nested House districts. Where 2026 turnout decides the trajectory.</p>
+      </div>
+      <div>
+        <h5>Underorganized Geographies</h5>
+        <p>Rural, suburban, and small-town Missouri — the geographies progressives have ceded. We're seeding back in.</p>
+      </div>
+      <div>
+        <h5>Constituency Bases</h5>
+        <p>Parents · workers · faith leaders · students · tenants. New formations for the constituencies the field has missed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="principles">
+  <div class="container">
+    <div class="principles-head">
+      <div class="section-eyebrow">06 — How We Work</div>
+      <h2 class="big">Six commitments<br>we hold to <em>each other.</em></h2>
+      <p class="principles-intro">
+        These aren't slogans. They're tests we apply to every project, partnership, and dollar that moves through the Incubator.
+      </p>
+    </div>
+
+    <div class="principles-grid">
+      <div class="principle">
+        <div class="principle-icon">+</div>
+        <h4>Community &amp; Belonging</h4>
+        <p>The antidote to alienation is small-scale belonging. People negotiate their interests in relationship — not in isolation.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-icon">↗</div>
+        <h4>Develop the Craft</h4>
+        <p>Leadership development is a discipline. We invest in the slow, patient work of building leaders who build leaders.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-icon">×</div>
+        <h4>Across Race, Place &amp; Gender</h4>
+        <p>Multiracial alignment is built — across rural, suburban, and urban Missouri, in workplaces, on doors, and online.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-icon">~</div>
+        <h4>Narrative That Stacks</h4>
+        <p>We support multiracial solidarity stories grounded in the real examples of multiracial power building Missouri produces.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-icon">▲</div>
+        <h4>Diverse Trusted Leaders</h4>
+        <p>From media presence to fielding our own candidates — the spokespeople match the base they come from.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-icon">∞</div>
+        <h4>Long-Term Power</h4>
+        <p>What we're building is the ability to participate in the public domain collectively, over time. That's the long game.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="join" id="join">
+  <div class="join-inner container">
+    <div>
+      <div class="section-eyebrow">07 — Plug In</div>
+      <h2>Build with <em>us.</em></h2>
+      <div class="join-list">
+        <a href="#" class="join-item">
+          <span class="arrow">→</span>
+          <div>
+            <h4>Organizers — apply for a residency</h4>
+            <p>Senior or emerging. Bring a question. Leave with a tested base.</p>
+          </div>
+        </a>
+        <a href="#" class="join-item">
+          <span class="arrow">→</span>
+          <div>
+            <h4>Funders — fund the field, not the form</h4>
+            <p>The Incubator routes resources to leaders who would otherwise get swallowed by nonprofit overhead.</p>
+          </div>
+        </a>
+        <a href="#" class="join-item">
+          <span class="arrow">→</span>
+          <div>
+            <h4>Partners — bring a fight</h4>
+            <p>Tenant unions, parent groups, worker formations, faith leaders. We co-design the experiment.</p>
+          </div>
+        </a>
+        <a href="#" class="join-item">
+          <span class="arrow">→</span>
+          <div>
+            <h4>Missourians — get on the list</h4>
+            <p>Online activism is a doorway. We'll meet you at the next door, the next house meeting, the next action.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="join-form">
+      <div class="label">Stay in the loop</div>
+      <h3>Field Notes from Missouri</h3>
+      <p>One letter a month. What we're learning, what we're testing, who's showing up. No filler — built for organizers and the people who fund them.</p>
+      <form class="form-row" onsubmit="event.preventDefault(); this.querySelector('button').textContent='You\u0027re in ✓'; this.querySelector('input').value='';">
+        <input type="email" placeholder="you@yourorg.com" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="join-form-foot">No spam. Unsubscribe anytime. Built in Missouri.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-mark">Missouri<br>Organizing<br><em>incubator</em></div>
+        <p>A nimble, strategic organizing catalyst — outside 501(c) structures — building enough people power to win and govern in Missouri.</p>
+      </div>
+      <div>
+        <h4>The Lab</h4>
+        <ul>
+          <li><a href="#why">Why Missouri</a></li>
+          <li><a href="#work">Theory of the Work</a></li>
+          <li><a href="#principles">Commitments</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>The Bets</h4>
+        <ul>
+          <li><a href="#bets">Parent Fellowship</a></li>
+          <li><a href="#bets">Groundwork</a></li>
+          <li><a href="#bets">Distributed Organizing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#join">Newsletter</a></li>
+          <li><a href="mailto:hello@example.org">Email the team</a></li>
+          <li><a href="#join">Partner with us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Missouri Organizing Incubator</span>
+      <span>Show-Me State · Field-Built · Year of No</span>
+    </div>
+  </div>
+</footer>
+
+<section class="outro">
+  <div class="outro-mark">people. <em>power.</em></div>
+</section>
+
+</body>
+</html>
