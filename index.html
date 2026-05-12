@@ -579,6 +579,17 @@
 </head>
 <body>
 
+<!-- Netlify Forms detection form. Hidden, never submitted. Lets Netlify register all fields at build time. -->
+<form name="moi-list" netlify netlify-honeypot="bot-field" hidden>
+  <input type="email" name="email" />
+  <input type="checkbox" name="is_aspiring_organizer" />
+  <input type="checkbox" name="is_funder" />
+  <input type="checkbox" name="is_co_conspirator" />
+  <input type="checkbox" name="is_loop_only" />
+  <textarea name="note"></textarea>
+  <input name="bot-field" />
+</form>
+
 <nav class="nav">
   <a href="#" class="brand">
     <div class="brand-mark">M</div>
