@@ -91,7 +91,7 @@
       radial-gradient(ellipse at 10% 90%, rgba(31,111,92,0.28) 0%, transparent 55%),
       linear-gradient(180deg, var(--plum) 0%, var(--plum-deep) 100%);
   }
-  .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: center; }
+  .hero-grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; max-width: 1080px; }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 12px;
     font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: var(--gold);
@@ -633,163 +633,6 @@
       </div>
     </div>
 
-    <!-- MO MAP -->
-    <div class="hero-map">
-      <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="dots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
-            <circle cx="2" cy="2" r="1.1" fill="rgba(246,198,110,0.55)"/>
-          </pattern>
-          <linearGradient id="moFill" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#1c6e7d" stop-opacity="0.95"/>
-            <stop offset="100%" stop-color="#5a2a5e" stop-opacity="0.98"/>
-          </linearGradient>
-          <filter id="mapShadow" x="-10%" y="-10%" width="120%" height="120%">
-            <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#0e4651" flood-opacity="0.5"/>
-          </filter>
-        </defs>
-
-        <!-- Accurate Missouri outline (clockwise from NW corner) -->
-        <!-- N border (IA), E border (Mississippi River), bootheel, S border (AR), W border (KS) + Missouri River curve -->
-        <path id="moPath" d="
-          M 30 33
-          L 122 30
-          L 253 33
-          L 363 31
-          L 388 31
-          L 393 64
-          L 397 96
-          L 405 138
-          L 432 168
-          L 447 188
-          L 470 200
-          L 492 209
-          L 492 226
-          L 504 252
-          L 511 265
-          L 503 287
-          L 522 312
-          L 538 332
-          L 548 356
-          L 540 388
-          L 548 420
-          L 548 431
-          L 548 481
-          L 496 481
-          L 496 433
-          L 504 431
-          L 320 431
-          L 127 431
-          L 127 382
-          L 127 89
-          L 93 60
-          Z
-        " fill="url(#moFill)" stroke="#f0a830" stroke-width="2.5" filter="url(#mapShadow)"/>
-
-        <!-- Dot overlay -->
-        <path d="
-          M 30 33 L 122 30 L 253 33 L 363 31 L 388 31 L 393 64 L 397 96 L 405 138 L 432 168 L 447 188 L 470 200 L 492 209 L 492 226 L 504 252 L 511 265 L 503 287 L 522 312 L 538 332 L 548 356 L 540 388 L 548 420 L 548 431 L 548 481 L 496 481 L 496 433 L 504 431 L 320 431 L 127 431 L 127 382 L 127 89 L 93 60 Z
-        " fill="url(#dots)" opacity="0.45"/>
-
-        <!-- Missouri River (W border curve into the state, runs SW to NE then ESE across to STL) -->
-        <path d="M 93 60 Q 115 95 127 130 T 165 175 Q 200 200 245 200 T 360 215 T 470 220 L 492 226"
-              stroke="#6b8a3a" stroke-width="1.8" fill="none" opacity="0.55" stroke-linecap="round"/>
-
-        <!-- Mississippi River suggestion along E edge (subtle wave inside the path) -->
-        <path d="M 388 31 Q 392 90 400 130 T 445 200 T 500 240 T 540 340 T 548 430"
-              stroke="#6b8a3a" stroke-width="1.4" fill="none" opacity="0.4" stroke-linecap="round" stroke-dasharray="1 3"/>
-
-        <!-- Solidarity connector lines between organizing hubs -->
-        <g stroke="#f0a830" stroke-width="1.2" fill="none" opacity="0.5" stroke-dasharray="3 5">
-          <line x1="133" y1="178" x2="234" y2="362"/>
-          <line x1="133" y1="178" x2="490" y2="223"/>
-          <line x1="234" y1="362" x2="490" y2="223"/>
-          <line x1="133" y1="178" x2="314" y2="192"/>
-          <line x1="314" y1="192" x2="490" y2="223"/>
-          <line x1="490" y1="223" x2="546" y2="352"/>
-          <line x1="234" y1="362" x2="546" y2="352"/>
-        </g>
-
-        <!-- City pins (accurate positions) -->
-        <!-- St. Joseph (39.77, -94.85) — hugs the W border just inside the state -->
-        <g transform="translate(138,108)">
-          <circle r="6" fill="#f5ead4" opacity="0.4"/>
-          <circle r="3" fill="#f5ead4"/>
-        </g>
-        <!-- Kansas City (39.10, -94.58) -->
-        <g transform="translate(133,178)">
-          <circle r="20" fill="#e0a52c" opacity="0.16"/>
-          <circle r="10" fill="#e0a52c" opacity="0.4"/>
-          <circle r="5.5" fill="#e0a52c"/>
-          <circle r="2.2" fill="#0e4651"/>
-        </g>
-        <!-- Columbia (38.95, -92.33) -->
-        <g transform="translate(314,192)">
-          <circle r="6" fill="#f5ead4" opacity="0.4"/>
-          <circle r="3" fill="#f5ead4"/>
-        </g>
-        <!-- Jefferson City (38.58, -92.17) — capital, marked with star -->
-        <g transform="translate(327,228)">
-          <circle r="7" fill="#f5ead4" opacity="0.35"/>
-          <path d="M 0 -5.5 L 1.4 -1.7 L 5.2 -1.7 L 2.1 0.7 L 3.3 4.5 L 0 2.2 L -3.3 4.5 L -2.1 0.7 L -5.2 -1.7 L -1.4 -1.7 Z"
-                fill="#f5ead4"/>
-        </g>
-        <!-- St. Louis (38.63, -90.20) -->
-        <g transform="translate(490,223)">
-          <circle r="20" fill="#e0a52c" opacity="0.16"/>
-          <circle r="10" fill="#e0a52c" opacity="0.4"/>
-          <circle r="5.5" fill="#e0a52c"/>
-          <circle r="2.2" fill="#0e4651"/>
-        </g>
-        <!-- Springfield (37.21, -93.30) -->
-        <g transform="translate(234,362)">
-          <circle r="15" fill="#e0a52c" opacity="0.16"/>
-          <circle r="8" fill="#e0a52c" opacity="0.4"/>
-          <circle r="4.5" fill="#e0a52c"/>
-          <circle r="2" fill="#0e4651"/>
-        </g>
-        <!-- Cape Girardeau (37.31, -89.52) -->
-        <g transform="translate(546,352)">
-          <circle r="6" fill="#f5ead4" opacity="0.4"/>
-          <circle r="3" fill="#f5ead4"/>
-        </g>
-        <!-- Bootheel marker (~36.3, -89.95) -->
-        <g transform="translate(522,460)">
-          <circle r="6" fill="#f5ead4" opacity="0.4"/>
-          <circle r="3" fill="#f5ead4"/>
-        </g>
-        <!-- Ferguson — anchor in STL metro (38.74, -90.30) -->
-        <g transform="translate(482,213)">
-          <circle r="3" fill="#e85d4e"/>
-        </g>
-
-        <!-- City labels — sans, chunky -->
-        <g font-family="Bricolage Grotesque, sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.1em" fill="#f5ead4">
-          <text x="148" y="104" text-anchor="start">ST. JOSEPH</text>
-          <text x="120" y="173" text-anchor="end">KANSAS CITY</text>
-          <text x="314" y="180" text-anchor="middle">COLUMBIA</text>
-          <text x="335" y="246" text-anchor="start" fill="#f5ead4">JEFFERSON CITY</text>
-          <text x="500" y="218" text-anchor="start">ST. LOUIS</text>
-          <text x="222" y="382" text-anchor="end">SPRINGFIELD</text>
-          <text x="556" y="346" text-anchor="start">CAPE GIRARDEAU</text>
-          <text x="532" y="478" text-anchor="start">BOOTHEEL</text>
-          <text x="472" y="226" text-anchor="end" font-size="8.5" fill="#e85d4e">FERGUSON</text>
-        </g>
-
-        <!-- Compass + label -->
-        <g transform="translate(40,470)">
-          <text font-family="Bricolage Grotesque, sans-serif" font-size="34" font-weight="900" letter-spacing="-0.03em" fill="#f0a830">missouri</text>
-          <text font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.18em" fill="#f5ead4" opacity="0.6" y="16">11 BASE-BUILDING REGIONS</text>
-        </g>
-
-        <!-- N arrow -->
-        <g transform="translate(560,60)">
-          <line x1="0" y1="-14" x2="0" y2="14" stroke="#f5ead4" stroke-width="1.2" opacity="0.6"/>
-          <path d="M -4 -8 L 0 -14 L 4 -8" stroke="#f5ead4" stroke-width="1.2" fill="none" opacity="0.6"/>
-          <text font-family="JetBrains Mono, monospace" font-size="9" fill="#f5ead4" opacity="0.7" text-anchor="middle" y="26">N</text>
-        </g>
-      </svg>
-    </div>
   </div>
 </section>
 
@@ -812,33 +655,6 @@
     </div>
   </div>
 </section>
-
-<!-- STATS -->
-<section class="stats">
-  <div class="stats-inner">
-    <div class="stat">
-      <div class="stat-tag">Union density</div>
-      <div class="stat-num">10<em>%</em></div>
-      <div class="stat-label">Down from 22% in the 1980s — the institutional muscle of belonging has been gutted.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-tag">2018 ballot</div>
-      <div class="stat-num">62<em>%</em></div>
-      <div class="stat-label">Voted to raise the state minimum wage — even as the same state sent Hawley to the Senate.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-tag">Parents for KC Kids</div>
-      <div class="stat-num">1<small>K+</small></div>
-      <div class="stat-label">Volunteer parents, teachers, and students organized to defend public schools.</div>
-    </div>
-    <div class="stat">
-      <div class="stat-tag">2026 priorities</div>
-      <div class="stat-num">5<em>.</em></div>
-      <div class="stat-label">"Year of no" campaigns: redistricting, abortion, income tax, vouchers, Senate.</div>
-    </div>
-  </div>
-</section>
-
 <!-- FUNCTIONS -->
 <section class="functions" id="functions">
   <div class="functions-head">
@@ -905,7 +721,7 @@
 <section class="programs" id="programs">
   <div class="programs-head">
     <div class="section-label">03 — Strategic bets</div>
-    <h2>Three priority bets,<br><em>this year</em>.</h2>
+    <h2>Three priority bets,<br><em>this summer</em>.</h2>
     <p>Where we're putting capacity, coaching, and infrastructure right now — to seize the openings the political moment is creating.</p>
   </div>
 
@@ -1019,29 +835,6 @@
     <div class="quote-block">
       <blockquote>"Cultivating the depth, breadth, and strength of organizing necessary to build enough power to win and govern in Missouri will require new things — including imagination and experimentation beyond the confines of 501c structures."</blockquote>
       <cite>— Launch memo · April 2026</cite>
-    </div>
-
-    <div class="timeline">
-      <div class="tl-step">
-        <div class="tl-year">— 2014</div>
-        <h4>Ferguson</h4>
-        <p>Missouri catalyzes what becomes the largest social movement in American history.</p>
-      </div>
-      <div class="tl-step">
-        <div class="tl-year">— 2018 → 2024</div>
-        <h4>Ballot wins</h4>
-        <p>Min. wage, Medicaid, paid leave, redistricting reform, abortion rights — direct democracy at work.</p>
-      </div>
-      <div class="tl-step">
-        <div class="tl-year">— 2026</div>
-        <h4>The year of no</h4>
-        <p>Coordinated defense across five fights — protecting rights and proving the bench.</p>
-      </div>
-      <div class="tl-step">
-        <div class="tl-year">— 2027 →</div>
-        <h4>Govern</h4>
-        <p>Turning organized people into a multiracial governing majority Missourians can call their own.</p>
-      </div>
     </div>
   </div>
 </section>
