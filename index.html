@@ -584,6 +584,8 @@
 
 <!-- Netlify Forms detection form. Hidden, never submitted. Lets Netlify register all fields at build time. -->
 <form name="moi-list" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="first" />
+  <input type="text" name="last" />
   <input type="email" name="email" />
   <input type="checkbox" name="is_aspiring_organizer" />
   <input type="checkbox" name="is_funder" />
@@ -888,10 +890,16 @@
         <input type="hidden" name="form-name" value="moi-list">
         <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
 
-        <!-- Step 1: email -->
+        <!-- Step 1: name + email -->
         <div class="form-step" id="step-email">
           <div class="form-row">
-            <input type="email" name="email" placeholder="you@organization.org" required id="moi-email">
+            <input type="text" name="first" placeholder="First name" required id="moi-first" autocomplete="given-name">
+          </div>
+          <div class="form-row">
+            <input type="text" name="last" placeholder="Last name" required id="moi-last" autocomplete="family-name">
+          </div>
+          <div class="form-row">
+            <input type="email" name="email" placeholder="you@organization.org" required id="moi-email" autocomplete="email">
             <button type="button" id="moi-continue">
               Continue
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -934,13 +942,17 @@
   if (!form) return;
   const continueBtn = document.getElementById('moi-continue');
   const backBtn = document.getElementById('moi-back');
+  const first = document.getElementById('moi-first');
+  const last = document.getElementById('moi-last');
   const email = document.getElementById('moi-email');
   const stepEmail = document.getElementById('step-email');
   const stepIntake = document.getElementById('step-intake');
   const stepThanks = document.getElementById('step-thanks');
 
   continueBtn.addEventListener('click', function() {
-    if (!email.checkValidity()) { email.reportValidity(); return; }
+    if (!first.reportValidity()) return;
+    if (!last.reportValidity()) return;
+    if (!email.reportValidity()) return;
     stepEmail.hidden = true;
     stepIntake.hidden = false;
   });
